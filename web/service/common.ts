@@ -36,6 +36,7 @@ import type {
 import type { RETRIEVE_METHOD } from '@/types/app'
 import type { SystemFeatures } from '@/types/feature'
 import { del, get, patch, post, put } from './base'
+import { systemFeaturesClient } from './contracts'
 
 type LoginSuccess = {
   result: 'success'
@@ -308,7 +309,7 @@ export const fetchSupportRetrievalMethods = (url: string): Promise<RetrievalMeth
 }
 
 export const getSystemFeatures = (): Promise<SystemFeatures> => {
-  return get<SystemFeatures>('/system-features')
+  return systemFeaturesClient.systemFeaturesContract()
 }
 
 export const enableModel = (url: string, body: { model: string, model_type: ModelTypeEnum }): Promise<CommonResponse> =>
